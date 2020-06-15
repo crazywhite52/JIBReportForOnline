@@ -1,0 +1,54 @@
+{
+  "name": "jib-react-admin-template",
+  "version": "1.0.0",
+  "description": "MIS - React Admin Dashboard",
+  "author": "MISdepartment <mis@jib.co.th>",
+  "license": "MIT",
+  "dependencies": {
+    "@trendmicro/react-sidenav": "^0.4.5",
+    "dateformat": "^3.0.3",
+    "google-map-react": "^1.0.6",
+    "grommet": "^2.7.0",
+    "jqwidgets-scripts": "^8.0.0",
+    "js-sha512": "^0.8.0",
+    "jwt-decode": "^2.2.0",
+    "jwt-simple": "^0.5.6",
+    "mdbootstrap": "^4.8.9",
+    "mdbreact": "^4.19.2",
+    "notistack": "^0.8.5",
+    "react": "^16.9.0",
+    "react-alert": "^5.5.0",
+    "react-alert-template-basic": "^1.0.0",
+    "react-barcode": "^1.3.4",
+    "react-bootstrap-sidebar": "0.0.1",
+    "react-bootstrap-switch": "^15.5.3",
+    "react-dom": "^16.7.0",
+    "react-image-picker": "^1.1.1",
+    "react-loading-overlay": "^1.0.1",
+    "react-medium-image-zoom": "^3.1.1",
+    "react-number-format": "^4.2.0",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "2.1.3",
+    "react-select": "^2.4.3",
+    "reactstrap": "^8.0.1",
+    "semantic-ui-react": "^0.87.3",
+    "styled-components": "^4.2.0",
+    "typescript": "^3.4.5",
+    "react-spring": "^8.0.27"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "bootstrap-switch-button-react": "^1.1.0"
+  }
+}

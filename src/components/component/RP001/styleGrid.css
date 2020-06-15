@@ -1,0 +1,56 @@
+.color1, .jqx-widget .color1 {
+    color: #fff;
+    background-color: #ffffff;
+  }
+/* เอกสารรับเข้า */
+.bg-color1, .jqx-widget .bg-color1 {
+    color: #000;
+    background-color: #ffffff;
+  }
+  /* มีเลขที่เอกสารแล้ว (R) */
+.bg-color2, .jqx-widget .bg-color2 {
+    color: #000;
+    background-color: #ffccff;
+}
+/* มี Invoice อยู่ในระบบแล้ว */
+.bg-color3, .jqx-widget .bg-color3 {
+    color: #000;
+    background-color: #ecff82;
+}
+/* ตั้งหนี้แล้ว (RR) */
+.bg-color4, .jqx-widget .bg-color4 {
+    color: #000;
+    background-color: #aeff82;
+}
+/* ยังไม่มีใบกำกับภาษี */
+.bg-color5, .jqx-widget .bg-color5 {
+    color: #000;
+    background-color: #ffffff;
+}
+/* มีใบกำกับภาษี */
+.bg-color6, .jqx-widget .bg-color6 {
+    color: #000;
+    background-color: #00cc00;
+}
+/* สำเนาใบกำกับภาษี */
+.bg-color7, .jqx-widget .bg-color7 {
+    color: #000;
+    background-color: #bbbbbb;
+}
+.colorSum{
+    color: rgb(255, 0, 0);  
+}
+.jqx-fill-state-normal-metrodark {
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 17px;
+    font-family: 'segoe ui', arial, sans-serif;
+    border-color: rgba(0,0,0,0.01);
+    color: #000000;
+    background: rgba(0,0,0,0.01);
+}
+
+.bg-color-cancel, .jqx-widget .bg-color-cancel {
+    color: #000;
+    background-color: red;
+}
