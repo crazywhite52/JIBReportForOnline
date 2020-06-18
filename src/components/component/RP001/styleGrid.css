@@ -40,6 +40,9 @@
 .colorSum{
     color: rgb(255, 0, 0);  
 }
+.colorTotal{
+    color: rgb(2, 71, 201);  
+}
 .jqx-fill-state-normal-metrodark {
     font-size: 12px;
     font-weight: bold;

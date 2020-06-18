@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react'
 import ApiService from '../../actions/apidata'
 import {
-    MDBContainer,
     MDBBtn,
     MDBIcon, MDBRow, MDBCol
 } from "mdbreact";
@@ -14,7 +13,7 @@ class Form001 extends PureComponent {
         this.ApiCall = new ApiService();
         this.state = {
             shipping: [],
-            shipid: '',
+            shipid: '1',
             dateBegin: date,
             dateEnd: date
         }
@@ -22,7 +21,7 @@ class Form001 extends PureComponent {
     componentDidMount() {
         this.ApiCall.searchShipping()
             .then(res => {
-                console.log(res);
+                //console.log(res);
                 this.setState({
                     shipping: res.data
                 })

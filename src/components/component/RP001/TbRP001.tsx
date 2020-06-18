@@ -4,6 +4,7 @@ import "jqwidgets-scripts/jqwidgets/styles/jqx.base.css";
 import "jqwidgets-scripts/jqwidgets/styles/jqx.material-purple.css";
 import "jqwidgets-scripts/jqwidgets/styles/jqx.metrodark.css";
 import './styleGrid.css'
+import Export01 from '../Export/Export01'
 import {
     MDBContainer,
     MDBBtn,
@@ -13,6 +14,7 @@ import {
 
 class TbRP001 extends React.PureComponent<any, IGridProps> {
     private myGrid = React.createRef<JqxGrid>();
+    props: any;
     constructor(props: IGridProps) {
         super(props) 
         this.excelBtnOnClick = this.excelBtnOnClick.bind(this);
@@ -22,8 +24,10 @@ class TbRP001 extends React.PureComponent<any, IGridProps> {
 
     }
 
-    private excelBtnOnClick() {
-        this.myGrid.current!.exportdata('xls', 'jqxGrid');
+    private excelBtnOnClick(row: any) {
+        //this.myGrid.current!.exportdata('xls', 'jqxGrid');
+        console.log(this.props.data);
+        
     };
 
     public render() {
@@ -62,6 +66,9 @@ class TbRP001 extends React.PureComponent<any, IGridProps> {
         const colorSum_price = (row: number, columnfield: any, value: number): string => {
                 return 'colorSum';
         }
+        const colorTotal = (row: number, columnfield: any, value: number): string => {
+            return 'colorTotal';
+    }
 
         const columns: any = [
             { text: 'No', align: 'center', width: '45',filterable:false,datafield:'available',cellsrenderer: (row: any) => {
@@ -71,7 +78,7 @@ class TbRP001 extends React.PureComponent<any, IGridProps> {
                 return '<div class="jqx-grid-cell-middle-align" style="margin-top: 8px;">'+nn+'</div>';
             } },
             { text: 'ประเภท', align: 'center',datafield:'order_type',cellsalign: 'center', width: '4%' },
-            { text: 'Order', align: 'center',datafield: 'order_number', cellsalign: 'center', width: '8%' },
+            { text: 'Order', align: 'center',datafield: 'order_number', cellsalign: 'center', width: '10%' },
             { text: 'หน่วยงาน', align: 'center',datafield: 'user_order_type_name',cellsalign: 'center', width: '7%' },
             { text: 'รูปแบบการจัดส่ง', align: 'center', width: '6%',datafield: 'shipping_type_mes',cellsalign: 'center',filterable:false },
             { text: 'ขนส่งแมส', align: 'center', width: '5%',filterable:false },
@@ -84,9 +91,9 @@ class TbRP001 extends React.PureComponent<any, IGridProps> {
             { text: 'กว้าง cm',  columngroup: 'Name',align: 'center',datafield: 'size_width',cellsalign: 'right', width: 60 },
             { text: 'ยาว cm',  columngroup: 'Name',align: 'center',datafield: 'size_length',cellsalign: 'right', width: 60 },
             { text: 'สูง cm',  columngroup: 'Name',align: 'center',datafield: 'size_high',cellsalign: 'right', width: 60 },
-            { text: 'ปริมาณรวม', align: 'center',datafield: 'size_total',cellsalign: 'right', width: '4%' },
+            { text: 'ปริมาณรวม', align: 'center',datafield: 'size_total',cellsalign: 'right',cellclassname: colorTotal, width: '4%' },
             { text: 'รูปแบบการชำระเงิน', align: 'center',datafield: 'payname', width: '10%' },
-            { text: 'พื้นที่จัดส่ง', align: 'center',datafield: 'order_province',cellsalign: 'center', width: '7%' },
+            { text: 'พื้นที่จัดส่ง', align: 'center',datafield: 'order_province',cellsalign: 'left', width: '7%' },
             { text: 'วันที่จัดส่ง', align: 'center',datafield: 'logistic_date', cellsalign: 'center',width: '9%' },
         ]
         // filtertype: 'checkedlist'
@@ -98,10 +105,12 @@ class TbRP001 extends React.PureComponent<any, IGridProps> {
 
 
         return (
-            <div>
+            <>
                   <MDBRow>
+                  
                   <MDBCol>
-                  <MDBBtn color="primary" onClick={this.excelBtnOnClick} size="sm"><MDBIcon icon="file-export" /> Export</MDBBtn>   
+                  
+                  {/* <MDBBtn color="primary" onClick={this.excelBtnOnClick} size="sm"><MDBIcon icon="file-export" /> Export</MDBBtn>    */}
                 <JqxGrid
                     //rowsheight={60}
                     // @ts-ignore
@@ -123,7 +132,7 @@ class TbRP001 extends React.PureComponent<any, IGridProps> {
                     columnsresize={true} sortable={true} />
                     </MDBCol>
 </MDBRow>
-            </div>
+            </>
         );
     }
 

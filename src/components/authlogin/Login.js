@@ -30,9 +30,9 @@ class Login extends Component {
     if (this.Auth.loggedIn()) {
       let profile = this.Auth.getProfile();
       this.setState({ profile: profile });
-      this.props.enqueueSnackbar("ยินดีต้อนรับ เข้าสู่ระบบ.....", {
-        variant: "success"
-      });
+      // this.props.enqueueSnackbar("ยินดีต้อนรับ เข้าสู่ระบบ.....", {
+      //   variant: "success"
+      // });
     }
   }
 

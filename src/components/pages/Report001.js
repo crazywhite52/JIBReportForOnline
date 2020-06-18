@@ -3,24 +3,65 @@ import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import Tb001 from '../component/RP001/TbRP001'
 import Form from '../component/RP001/Form001'
 import ApiService from '../actions/apidata';
+import AuthService from '../authlogin/AuthService'
 import LoadingOverlay from "react-loading-overlay";
+import Export01 from '../component/Export/Export01'
+import { withSnackbar } from "notistack";
+var today = new Date(),
+    date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 class Report001 extends PureComponent {
     constructor(props) {
         super(props)
         this.ApiCall = new ApiService();
+        this.Auth = new AuthService();
         this.state = {
             loading: false,
             DataList: [],
-            shipping_id: '',
-            dateBegin: '',
-            dateEnd: ''
+            shipping_id: 1,
+            dateBegin: date,
+            user: '',
+            dateEnd: date
+        }
+    }
+    componentWillMount() {
+        if (!this.Auth.loggedIn()) {
+            this.props.history.replace('/login')
+        }
+        else {
+            try {
+
+                const profile = this.Auth.getProfile()
+                this.setState({
+                    user: profile
+                }, () => {
+                    let Access = this.Auth.getAccess();
+                    let Accessapp = JSON.parse(Access);
+                    let Accessadmin = this.Auth.getAccessadmin();
+                    //console.log(Accessadmin);
+                    if (Accessapp.length == 0 && Accessadmin==0) {
+                        this.props.enqueueSnackbar("คุณยังไม่มีสิทธิ์เข้าใช้หน้าจอนี้", {
+                            variant: "error"
+                        });
+                        this.props.history.replace('/login')
+                    } else {
+
+                    }
+                    //console.log(Accessapp[0]['menu_id']);
+
+                })
+            }
+            catch (err) {
+                this.Auth.logout()
+                this.props.history.replace('/login')
+            }
         }
     }
     componentDidMount() {
-        this.LoadData();
 
+        this.LoadData();
     }
     Btsearch = (shipid, dateBegin, dateEnd) => {
+        //console.log(shipid + dateBegin + dateEnd);
         this.setState({
             loading: true
         }, () => {
@@ -33,6 +74,8 @@ class Report001 extends PureComponent {
                 }, () => {
                     this.setState({
                         loading: false
+                    }, () => {
+                        this.LoadData();
                     })
                 })
 
@@ -43,9 +86,9 @@ class Report001 extends PureComponent {
 
         let datasend = Array();
         datasend = {
-            "shipping_id": 1,
-            "dateBegin": "2020-05-01",
-            "dateEnd": "2020-05-31"
+            "shipping_id": this.state.shipping_id,
+            "dateBegin": this.state.dateBegin,
+            "dateEnd": this.state.dateEnd
         }
         this.setState({
             loading: true
@@ -57,7 +100,7 @@ class Report001 extends PureComponent {
                     DataList: res.data,
                     loading: false
                 }, () => {
-                    console.log(this.state.DataList);
+                    // console.log(this.state.DataList);
                 })
             }).catch(error => {
                 console.error(error.message);
@@ -69,7 +112,9 @@ class Report001 extends PureComponent {
                 <MDBContainer fluid>
                     <LoadingOverlay active={this.state.loading} spinner text="loading...">
                         <Form Btsearch={this.Btsearch} />
-                        <Tb001 data={this.state.DataList} />
+                        <Export01 data={this.state.DataList} />
+                        <Tb001 data={this.state.DataList}
+                        />
                     </LoadingOverlay>
                 </MDBContainer>
             </div>
@@ -77,4 +122,4 @@ class Report001 extends PureComponent {
     }
 }
 
-export default Report001
+export default withSnackbar(Report001)
