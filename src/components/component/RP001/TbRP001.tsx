@@ -4,18 +4,16 @@ import "jqwidgets-scripts/jqwidgets/styles/jqx.base.css";
 import "jqwidgets-scripts/jqwidgets/styles/jqx.material-purple.css";
 import "jqwidgets-scripts/jqwidgets/styles/jqx.metrodark.css";
 import './styleGrid.css'
-import Export01 from '../Export/Export01'
+
 import {
-    MDBContainer,
-    MDBBtn,
-    MDBIcon,MDBRow, MDBCol
+    MDBRow, MDBCol
   } from "mdbreact";
 
 
 class TbRP001 extends React.PureComponent<any, IGridProps> {
     private myGrid = React.createRef<JqxGrid>();
     props: any;
-    constructor(props: IGridProps) {
+    constructor(props: {}) {
         super(props) 
         this.excelBtnOnClick = this.excelBtnOnClick.bind(this);
 
@@ -107,10 +105,7 @@ class TbRP001 extends React.PureComponent<any, IGridProps> {
         return (
             <>
                   <MDBRow>
-                  
                   <MDBCol>
-                  
-                  {/* <MDBBtn color="primary" onClick={this.excelBtnOnClick} size="sm"><MDBIcon icon="file-export" /> Export</MDBBtn>    */}
                 <JqxGrid
                     //rowsheight={60}
                     // @ts-ignore

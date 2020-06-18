@@ -2,8 +2,6 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 
 import homepage from "./start/homepage";
-import pagesearch from "./start/page_search";
-import pagelocation from "./start/page_location";
 import login from "./authlogin/Login";
 import RP001 from './pages/Report001'
 
